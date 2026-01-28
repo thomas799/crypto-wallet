@@ -6,7 +6,7 @@ import { formatUnits } from 'viem';
 import type { ChartDataPoint, ProfitLossData, TimeRange } from './types';
 
 import { getEthPrice, getTokenTransfers } from '../shared/api/etherscan';
-import { IS_DEMO, walletAddress } from '../shared/config';
+import { IS_DEMO, tokenHash, walletAddress } from '../shared/config';
 import { TIME_RANGE_CONFIG } from './config';
 import { getDateFormat, getDemoProfitLossData, getStartTime } from './utils';
 
@@ -25,7 +25,7 @@ export async function getProfitLossData(
 
   try {
     const [tokenTransfers, ethPriceData] = await Promise.all([
-      getTokenTransfers(walletAddress),
+      getTokenTransfers(walletAddress, tokenHash),
       getEthPrice()
     ]);
 
