@@ -2,7 +2,7 @@ import NumberFlow from '@number-flow/react';
 
 import type { WalletData } from '../types';
 
-import { cn } from '../../../lib/utils';
+import { cn } from '../../shared/utils';
 
 interface BalanceDisplayProps {
   wallet: WalletData;

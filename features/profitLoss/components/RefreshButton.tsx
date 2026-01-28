@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { RefreshCw } from 'lucide-react';
 
-import { cn } from '../../../lib/utils';
+import { cn } from '../../shared/utils';
 
 interface RefreshButtonProps {
   isFetching: boolean;

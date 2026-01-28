@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 
-import { cn } from '../../../lib/utils';
+import { cn } from '../../shared/utils';
 
 interface SubmitButtonProps {
   isDeposit: boolean;

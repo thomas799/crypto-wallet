@@ -4,14 +4,8 @@ import { erc20Abi, parseUnits } from 'viem';
 
 import type { TransactionResult } from './types';
 
-import {
-  publicClient,
-  usdcAddress,
-  walletAddress as viemWalletAddress,
-  walletClient
-} from '../../lib/viem-client';
-
-const IS_DEMO = !process.env.ETHERSCAN_API_KEY;
+import { publicClient, walletClient } from '../shared/api/viem';
+import { IS_DEMO, usdcContract, walletAddress } from '../shared/config';
 
 export async function deposit(
   amount: string,
@@ -32,14 +26,14 @@ export async function deposit(
       };
     }
 
-    if (!usdcAddress) {
+    if (!usdcContract) {
       return {
         error: 'USDC_CONTRACT_ADDRESS is not set in environment variables',
         success: false
       };
     }
 
-    if (!viemWalletAddress) {
+    if (!walletAddress) {
       return {
         error: 'NEXT_PUBLIC_WALLET_ADDRESS is not set in environment variables',
         success: false
@@ -51,8 +45,8 @@ export async function deposit(
     const { request } = await publicClient.simulateContract({
       abi: erc20Abi,
       account: walletClient.account,
-      address: usdcAddress,
-      args: [viemWalletAddress, parsedAmount],
+      address: usdcContract,
+      args: [walletAddress, parsedAmount],
       functionName: 'transfer'
     });
 
@@ -84,7 +78,7 @@ export async function withdraw(
       };
     }
 
-    if (!usdcAddress) {
+    if (!usdcContract) {
       return {
         error: 'USDC_CONTRACT_ADDRESS is not set in environment variables',
         success: false
@@ -96,7 +90,7 @@ export async function withdraw(
     const { request } = await publicClient.simulateContract({
       abi: erc20Abi,
       account: walletClient.account,
-      address: usdcAddress,
+      address: usdcContract,
       args: [toAddress as `0x${string}`, parsedAmount],
       functionName: 'transfer'
     });

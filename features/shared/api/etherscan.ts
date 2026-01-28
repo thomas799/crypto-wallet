@@ -1,9 +1,10 @@
 import 'server-only';
 import axios from 'axios';
 
+import { walletAddress } from '../config';
+
 const BASE_URL = 'https://api.etherscan.io/v2/api';
 const apiKey = process.env.ETHERSCAN_API_KEY;
-const walletAddress = process.env.NEXT_PUBLIC_WALLET_ADDRESS;
 const usdcContract = process.env.USDC_CONTRACT_ADDRESS;
 const tokenHash = process.env.TOKEN_HASH;
 
@@ -164,5 +165,3 @@ export async function getTransactionList(
   });
   return Array.isArray(result) ? result : [];
 }
-
-export { tokenHash, usdcContract, walletAddress };

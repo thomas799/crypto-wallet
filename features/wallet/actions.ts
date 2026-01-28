@@ -10,26 +10,14 @@ import {
   getEthPrice,
   getTokenTransfers,
   getTransactionList,
-  getUsdcBalance,
-  walletAddress
-} from '../../lib/etherscan';
-
-const IS_DEMO = !process.env.ETHERSCAN_API_KEY;
-
-function getDemoWalletData(): WalletData {
-  return {
-    address: '0xDemo...Address',
-    dailyChangePercent: 5.2,
-    dailyChangeUsd: 23.43,
-    joinedDate: 'Nov 2025',
-    portfolioValueUsd: 3361.42,
-    usdcBalance: 984.42,
-    usdcPlusPortfolio: 0.01
-  };
-}
+  getUsdcBalance
+} from '../shared/api/etherscan';
+import { IS_DEMO, walletAddress } from '../shared/config';
+import { DEMO_WALLET_DATA } from './config';
+import { calculateDailyChange } from './utils';
 
 export async function getWalletData(): Promise<WalletData> {
-  if (IS_DEMO) return getDemoWalletData();
+  if (IS_DEMO) return DEMO_WALLET_DATA;
 
   if (!walletAddress) {
     throw new Error(
@@ -54,20 +42,7 @@ export async function getWalletData(): Promise<WalletData> {
     const portfolioValueUsd = ethBalance * ethPrice;
     const usdcPlusPortfolio = usdcBalance + portfolioValueUsd;
 
-    const oneDayAgo = Math.floor(Date.now() / 1000) - 86400;
-    const recentTransfers = tokenTransfers.filter(
-      (tx) => Number(tx.timeStamp) >= oneDayAgo
-    );
-
-    let dailyChangeUsd = 0;
-    for (const tx of recentTransfers) {
-      const val = Number(
-        formatUnits(BigInt(tx.value), Number(tx.tokenDecimal))
-      );
-      const isIncoming = tx.to.toLowerCase() === walletAddress.toLowerCase();
-      dailyChangeUsd += isIncoming ? val : -val;
-    }
-
+    const dailyChangeUsd = calculateDailyChange(tokenTransfers, walletAddress);
     const dailyChangePercent =
       usdcBalance > 0 ? (dailyChangeUsd / usdcBalance) * 100 : 0;
 
@@ -88,6 +63,6 @@ export async function getWalletData(): Promise<WalletData> {
     };
   } catch (error) {
     console.error('Failed to fetch wallet data:', error);
-    return getDemoWalletData();
+    return DEMO_WALLET_DATA;
   }
 }

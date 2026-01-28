@@ -24,8 +24,3 @@ export const walletClient = account
       transport: http(rpcUrl)
     })
   : undefined;
-
-export const walletAddress = process.env
-  .NEXT_PUBLIC_WALLET_ADDRESS as `0x${string}`;
-
-export const usdcAddress = process.env.USDC_CONTRACT_ADDRESS as `0x${string}`;

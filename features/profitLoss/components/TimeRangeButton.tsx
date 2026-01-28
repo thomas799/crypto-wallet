@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 import type { TimeRange } from '../types';
 
-import { cn } from '../../../lib/utils';
+import { cn } from '../../shared/utils';
 
 interface TimeRangeButtonProps {
   onRangeChange: (range: TimeRange) => void;

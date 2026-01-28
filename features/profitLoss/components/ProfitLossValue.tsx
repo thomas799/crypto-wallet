@@ -1,6 +1,6 @@
 import NumberFlow from '@number-flow/react';
 
-import { cn } from '../../../lib/utils';
+import { cn } from '../../shared/utils';
 
 interface ProfitLossValueProps {
   isPositive: boolean;
