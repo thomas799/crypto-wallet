@@ -2,12 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --bg-main: #8b4513;
-}
-
 body {
-  background-color: var(--bg-main);
+  background: linear-gradient(to bottom, #f5f5f5 0%, #f5f5f5 85%, #c2410c 85%, #c2410c 100%);
   min-height: 100vh;
 }
 
