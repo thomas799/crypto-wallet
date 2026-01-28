@@ -1,4 +1,5 @@
-import { DepositButton, WithdrawButton } from '../../shared/ui';
+import { DepositButton } from 'features/shared/components/DepositButton';
+import { WithdrawButton } from 'features/shared/components/WithdrawButton';
 
 interface TransactionButtonsProps {
   onDeposit: () => void;
