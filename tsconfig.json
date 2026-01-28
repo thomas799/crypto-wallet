@@ -25,31 +25,7 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "forceConsistentCasingInFileNames": true,
-    /* Path aliases */
     "baseUrl": ".",
-    "paths": {
-      "@/*": [
-        "./*"
-      ],
-      "@/components/*": [
-        "./components/*"
-      ],
-      "@/hooks/*": [
-        "./hooks/*"
-      ],
-      "@/lib/*": [
-        "./lib/*"
-      ],
-      "@/types/*": [
-        "./types/*"
-      ],
-      "@/constants/*": [
-        "./constants/*"
-      ],
-      "@/services/*": [
-        "./services/*"
-      ]
-    },
     "allowJs": true,
     "incremental": true,
     "plugins": [
