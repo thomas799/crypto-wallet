@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --bg-main: #8b4513;
+}
+
+body {
+  background-color: var(--bg-main);
+  min-height: 100vh;
+}
+
+/* NumberFlow digit styling */
+number-flow-react::part(suffix) {
+  font-weight: inherit;
+}
