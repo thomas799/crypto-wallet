@@ -32,7 +32,7 @@ export function PriceChart({ data, onHover }: PriceChartProps) {
   }, [onHover]);
 
   return (
-    <div className="mt-4 h-[180px] w-full">
+    <div className="mt-4 h-[87px] w-full">
       <ResponsiveContainer height="100%" width="100%">
         <AreaChart
           data={data}

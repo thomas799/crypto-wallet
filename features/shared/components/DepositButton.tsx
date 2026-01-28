@@ -9,7 +9,7 @@ export function DepositButton({ onDeposit }: DepositButtonProps) {
   return (
     <motion.button
       drag
-      className="flex items-center justify-center gap-2 rounded-2xl bg-orange-500 py-4 text-base font-semibold text-white"
+      className="flex items-center justify-center gap-2 rounded-2xl bg-orange-600 py-4 text-base font-semibold text-white"
       dragConstraints={{ bottom: 0, left: 0, right: 0, top: 0 }}
       dragElastic={0.1}
       whileDrag={{ rotate: 2, scale: 1.05 }}

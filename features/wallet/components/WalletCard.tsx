@@ -24,8 +24,10 @@ export function WalletCard({
   return (
     <div className="flex flex-col justify-between rounded-3xl bg-white p-6 shadow-lg">
       <div>
-        <WalletHeader wallet={wallet} />
-        <PortfolioStats wallet={wallet} />
+        <div className="flex items-start justify-between">
+          <WalletHeader wallet={wallet} />
+          <PortfolioStats wallet={wallet} />
+        </div>
         <BalanceDisplay wallet={wallet} />
       </div>
       <TransactionButtons onDeposit={onDeposit} onWithdraw={onWithdraw} />

@@ -8,10 +8,10 @@ interface PortfolioStatsProps {
 
 export function PortfolioStats({ wallet }: PortfolioStatsProps) {
   return (
-    <div className="mt-5 flex items-center gap-6 border-b border-gray-100 pb-5">
-      <div>
+    <div className="flex items-center gap-6">
+      <div className="text-right">
         <p className="text-xs text-gray-500">Portfolio ( Not USDC )</p>
-        <p className="mt-0.5 text-lg font-semibold text-gray-900">
+        <p className="mt-0.5 text-base font-semibold text-gray-900">
           <NumberFlow
             format={{
               currency: 'USD',
@@ -21,11 +21,14 @@ export function PortfolioStats({ wallet }: PortfolioStatsProps) {
           />
         </p>
       </div>
-      <div className="border-l border-gray-100 pl-6">
+      <div className="border-l border-gray-200 pl-6 text-right">
         <p className="text-xs text-gray-500">USDC + Portfolio</p>
-        <div className="mt-0.5 flex items-center gap-1.5">
-          <span className="inline-block h-3 w-3 rounded-full bg-success" />
-          <p className="text-lg font-semibold text-gray-900">
+        <div className="mt-0.5 flex items-center justify-end gap-1.5">
+          <span className="inline-flex">
+            <span className="-mr-1 inline-block h-3 w-3 rounded-full bg-success" />
+            <span className="inline-block h-3 w-3 rounded-full bg-orange-400" />
+          </span>
+          <p className="text-base font-semibold text-gray-900">
             <NumberFlow
               format={{
                 currency: 'USD',
