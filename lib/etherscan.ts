@@ -1,3 +1,4 @@
+import 'server-only';
 import axios from 'axios';
 
 const BASE_URL = 'https://api.etherscan.io/v2/api';

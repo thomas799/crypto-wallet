@@ -7,7 +7,6 @@ body {
   min-height: 100vh;
 }
 
-/* NumberFlow digit styling */
 number-flow-react::part(suffix) {
   font-weight: inherit;
 }
