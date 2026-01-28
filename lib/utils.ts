@@ -1,4 +1,4 @@
-import { clsx, type ClassValue } from 'clsx';
+import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
@@ -12,13 +12,13 @@ export function formatCurrency(
   return new Intl.NumberFormat('en-US', {
     currency: 'USD',
     style: 'currency',
-    ...options,
+    ...options
   }).format(value);
 }
 
 export function formatTokenBalance(value: number, decimals = 2): string {
   return new Intl.NumberFormat('en-US', {
     maximumFractionDigits: decimals,
-    minimumFractionDigits: decimals,
+    minimumFractionDigits: decimals
   }).format(value);
 }

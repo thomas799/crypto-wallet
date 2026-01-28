@@ -10,9 +10,9 @@ export function Providers({ children }: { children: ReactNode }) {
         defaultOptions: {
           queries: {
             refetchInterval: 60_000,
-            staleTime: 60_000,
-          },
-        },
+            staleTime: 60_000
+          }
+        }
       })
   );
 

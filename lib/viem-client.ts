@@ -6,7 +6,7 @@ const rpcUrl = 'https://eth.llamarpc.com';
 
 export const publicClient = createPublicClient({
   chain: mainnet,
-  transport: http(rpcUrl),
+  transport: http(rpcUrl)
 });
 
 const rawKey = process.env.WALLET_PRIVATE_KEY;
@@ -20,10 +20,11 @@ export const walletClient = account
   ? createWalletClient({
       account,
       chain: mainnet,
-      transport: http(rpcUrl),
+      transport: http(rpcUrl)
     })
   : undefined;
 
-export const walletAddress = process.env.NEXT_PUBLIC_WALLET_ADDRESS as `0x${string}`;
+export const walletAddress = process.env
+  .NEXT_PUBLIC_WALLET_ADDRESS as `0x${string}`;
 
 export const usdcAddress = process.env.USDC_CONTRACT_ADDRESS as `0x${string}`;

@@ -38,7 +38,7 @@ async function etherscanGet<T>(params: Record<string, string>): Promise<T> {
   if (cached !== null) return cached;
 
   const { data } = await axios.get(BASE_URL, {
-    params: { ...params, apikey: apiKey, chainid: '1' },
+    params: { ...params, apikey: apiKey, chainid: '1' }
   });
 
   if (data.status === '0' && data.message === 'NOTOK') {
@@ -56,7 +56,7 @@ export async function getEthBalance(
     action: 'balance',
     address,
     module: 'account',
-    tag: 'latest',
+    tag: 'latest'
   });
 }
 
@@ -69,7 +69,7 @@ export async function getTokenBalance(
     address,
     contractaddress: contractAddress,
     module: 'account',
-    tag: 'latest',
+    tag: 'latest'
   });
 }
 
@@ -77,7 +77,9 @@ export async function getUsdcBalance(
   address: string = walletAddress!
 ): Promise<string> {
   if (!usdcContract) {
-    throw new Error('USDC_CONTRACT_ADDRESS is not set in environment variables');
+    throw new Error(
+      'USDC_CONTRACT_ADDRESS is not set in environment variables'
+    );
   }
   return getTokenBalance(usdcContract, address);
 }
@@ -97,7 +99,7 @@ export async function getEthPrice(): Promise<{
 }> {
   return etherscanGet({
     action: 'ethprice',
-    module: 'stats',
+    module: 'stats'
   });
 }
 
@@ -127,7 +129,7 @@ export async function getTokenTransfers(
     endblock: endBlock,
     module: 'account',
     sort: 'asc',
-    startblock: startBlock,
+    startblock: startBlock
   };
   if (contractAddress) {
     params.contractaddress = contractAddress;
@@ -157,10 +159,9 @@ export async function getTransactionList(
     module: 'account',
     offset,
     page,
-    sort,
+    sort
   });
   return Array.isArray(result) ? result : [];
 }
 
 export { tokenHash, usdcContract, walletAddress };
-

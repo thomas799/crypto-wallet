@@ -5,11 +5,11 @@ import { Providers } from './providers';
 
 export const metadata: Metadata = {
   description: 'Portfolio tracking and USDC management',
-  title: 'Crypto Wallet',
+  title: 'Crypto Wallet'
 };
 
 export default function RootLayout({
-  children,
+  children
 }: {
   children: React.ReactNode;
 }) {
