@@ -1,12 +1,12 @@
 import 'server-only';
 import { createPublicClient, createWalletClient, http } from 'viem';
 import { privateKeyToAccount } from 'viem/accounts';
-import { mainnet } from 'viem/chains';
+import { sepolia } from 'viem/chains';
 
-const rpcUrl = 'https://eth.llamarpc.com';
+const rpcUrl = 'https://rpc.sepolia.org';
 
 export const publicClient = createPublicClient({
-  chain: mainnet,
+  chain: sepolia,
   transport: http(rpcUrl)
 });
 
@@ -20,7 +20,7 @@ export const account = isValidKey
 export const walletClient = account
   ? createWalletClient({
       account,
-      chain: mainnet,
+      chain: sepolia,
       transport: http(rpcUrl)
     })
   : undefined;

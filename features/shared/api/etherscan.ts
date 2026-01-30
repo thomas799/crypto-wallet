@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import { walletAddress } from '../config';
 
-const BASE_URL = 'https://api.etherscan.io/v2/api';
+const BASE_URL = 'https://api-sepolia.etherscan.io/api';
 const apiKey = process.env.ETHERSCAN_API_KEY;
 const usdcContract = process.env.USDC_CONTRACT_ADDRESS;
 const tokenHash = process.env.TOKEN_HASH;
@@ -40,7 +40,7 @@ async function etherscanGet<T>(params: Record<string, string>): Promise<T> {
   if (cached !== null) return cached;
 
   const { data } = await axios.get(BASE_URL, {
-    params: { ...params, apikey: apiKey, chainid: '1' }
+    params: { ...params, apikey: apiKey, chainid: '11155111' }
   });
 
   if (data.status === '0' && data.message === 'NOTOK') {
