@@ -1,5 +1,5 @@
-import Image from 'next/image';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 interface WithdrawButtonProps {
   onWithdraw: () => void;
@@ -17,7 +17,7 @@ export function WithdrawButton({ onWithdraw }: WithdrawButtonProps) {
       whileTap={{ scale: 0.97 }}
       onClick={onWithdraw}
     >
-      <Image src="/arrow-up-icon.svg" alt="" width={20} height={20} />
+      <Image alt="" height={20} src="/arrow-up-icon.svg" width={20} />
       Withdraw
     </motion.button>
   );

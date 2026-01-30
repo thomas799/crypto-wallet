@@ -1,5 +1,5 @@
-import Image from 'next/image';
 import NumberFlow from '@number-flow/react';
+import Image from 'next/image';
 
 import type { WalletData } from '../types';
 
@@ -30,7 +30,7 @@ export function PortfolioStats({ wallet }: PortfolioStatsProps) {
           USDC + Portfolio
         </p>
         <div className="flex items-center gap-1.5">
-          <Image src="/money-icon.png" alt="" width={24} height={24} />
+          <Image alt="" height={24} src="/money-icon.png" width={24} />
           <p className="text-base font-medium leading-5 tracking-[-0.02em] text-black">
             <NumberFlow
               format={{

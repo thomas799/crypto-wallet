@@ -35,11 +35,11 @@ export function PriceChart({ data, onHover }: PriceChartProps) {
   return (
     <div className="relative min-h-[88px] w-full flex-1">
       <Image
-        src="/brand-icon.svg"
         alt=""
-        width={30}
-        height={20}
         className="absolute right-0 top-[-53px]"
+        height={20}
+        src="/brand-icon.svg"
+        width={30}
       />
       <ResponsiveContainer height="100%" width="100%">
         <AreaChart

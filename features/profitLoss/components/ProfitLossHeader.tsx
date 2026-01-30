@@ -1,5 +1,5 @@
-import Image from 'next/image';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 import { cn } from '../../shared/utils';
 
@@ -21,11 +21,15 @@ export function ProfitLossHeader({
           'text-[10px] leading-none',
           isPositive ? 'text-[#3CAB68]' : 'rotate-180 text-danger'
         )}
-        style={{ transform: isPositive ? 'scaleY(0.75)' : 'scaleY(0.75) rotate(180deg)' }}
+        style={{
+          transform: isPositive ? 'scaleY(0.75)' : 'scaleY(0.75) rotate(180deg)'
+        }}
       >
         ▲
       </span>
-      <span className="text-sm font-normal leading-[18px] tracking-[-0.02em] text-[#868686]">Profit/Loss</span>
+      <span className="text-sm font-normal leading-[18px] tracking-[-0.02em] text-[#868686]">
+        Profit/Loss
+      </span>
       <motion.button
         className="rounded-full p-0.5 hover:opacity-70"
         whileHover={{ scale: 1.1 }}
@@ -33,11 +37,11 @@ export function ProfitLossHeader({
         onClick={onRefresh}
       >
         <Image
-          src="/share-icon.svg"
           alt=""
-          width={16}
-          height={16}
           className={cn(isFetching && 'animate-pulse')}
+          height={16}
+          src="/share-icon.svg"
+          width={16}
         />
       </motion.button>
     </div>

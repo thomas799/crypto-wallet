@@ -1,18 +1,12 @@
 import NumberFlow from '@number-flow/react';
 
-import { cn } from '../../shared/utils';
-
 interface ProfitLossValueProps {
   isPositive: boolean;
   label: string;
   value: number;
 }
 
-export function ProfitLossValue({
-  isPositive,
-  label,
-  value
-}: ProfitLossValueProps) {
+export function ProfitLossValue({ label, value }: ProfitLossValueProps) {
   return (
     <div>
       <div className="text-[40px] font-normal leading-[51px] tracking-[-0.02em] text-black">

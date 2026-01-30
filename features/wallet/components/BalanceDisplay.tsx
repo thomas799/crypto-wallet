@@ -34,7 +34,12 @@ export function BalanceDisplay({ wallet }: BalanceDisplayProps) {
             value={wallet.dailyChangeUsd}
           />
         </span>
-        <span className={cn('flex items-center gap-0.5', isPositive ? 'text-success' : 'text-danger')}>
+        <span
+          className={cn(
+            'flex items-center gap-0.5',
+            isPositive ? 'text-success' : 'text-danger'
+          )}
+        >
           <span className="text-xs">{isPositive ? '\u2191' : '\u2193'}</span>
           <NumberFlow
             format={{
