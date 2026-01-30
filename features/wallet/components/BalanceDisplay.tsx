@@ -40,7 +40,16 @@ export function BalanceDisplay({ wallet }: BalanceDisplayProps) {
             isPositive ? 'text-success' : 'text-danger'
           )}
         >
-          <span className="text-xs">{isPositive ? '\u2191' : '\u2193'}</span>
+          <span
+            className="text-[10px] leading-none"
+            style={{
+              transform: isPositive
+                ? 'scaleY(0.75)'
+                : 'scaleY(0.75) rotate(180deg)'
+            }}
+          >
+            ▲
+          </span>
           <NumberFlow
             format={{
               maximumFractionDigits: 1,
