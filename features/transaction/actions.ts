@@ -43,6 +43,8 @@ export async function deposit(
 
     const parsedAmount = parseUnits(amount, 6);
 
+    // Note: In a real application, deposit would require user's wallet connection (MetaMask/WalletConnect)
+    // For demo purposes, this performs a self-transfer to demonstrate the transaction flow
     const { request } = await publicClient.simulateContract({
       abi: erc20Abi,
       account: walletClient.account,
