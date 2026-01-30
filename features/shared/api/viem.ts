@@ -3,11 +3,13 @@ import { createPublicClient, createWalletClient, http } from 'viem';
 import { privateKeyToAccount } from 'viem/accounts';
 import { sepolia } from 'viem/chains';
 
-const rpcUrl = 'https://rpc.sepolia.org';
+const rpcUrl = 'https://ethereum-sepolia-rpc.publicnode.com';
 
 export const publicClient = createPublicClient({
   chain: sepolia,
-  transport: http(rpcUrl)
+  transport: http(rpcUrl, {
+    timeout: 30_000
+  })
 });
 
 const rawKey = process.env.WALLET_PRIVATE_KEY;
@@ -21,6 +23,8 @@ export const walletClient = account
   ? createWalletClient({
       account,
       chain: sepolia,
-      transport: http(rpcUrl)
+      transport: http(rpcUrl, {
+        timeout: 30_000
+      })
     })
   : undefined;
