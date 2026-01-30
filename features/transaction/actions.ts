@@ -20,8 +20,9 @@ export async function deposit(
 
   try {
     if (!walletClient) {
+      const rawKey = process.env.WALLET_PRIVATE_KEY;
       return {
-        error: 'Wallet not configured (missing private key)',
+        error: `Wallet not configured. Key exists: ${!!rawKey}, starts with 0x: ${rawKey?.startsWith('0x')}, length: ${rawKey?.length}`,
         success: false
       };
     }
