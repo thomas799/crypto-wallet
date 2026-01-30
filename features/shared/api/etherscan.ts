@@ -40,7 +40,7 @@ async function etherscanGet<T>(params: Record<string, string>): Promise<T> {
   if (cached !== null) return cached;
 
   const { data } = await axios.get(BASE_URL, {
-    params: { ...params, apikey: apiKey, chainid: '11155111' }
+    params: { ...params, apikey: apiKey }
   });
 
   if (data.status === '0' && data.message === 'NOTOK') {

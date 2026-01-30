@@ -25,44 +25,54 @@ export async function getWalletData(): Promise<WalletData> {
     );
   }
 
-  try {
-    const [usdcRaw, ethBalanceWei, ethPriceData, firstTxList, tokenTransfers] =
-      await Promise.all([
-        getUsdcBalance(),
-        getEthBalance(),
-        getEthPrice(),
-        getTransactionList(walletAddress, 'asc', '1', '1'),
-        getTokenTransfers(walletAddress)
-      ]);
+  const [
+    usdcResult,
+    ethBalanceResult,
+    ethPriceResult,
+    txListResult,
+    transfersResult
+  ] = await Promise.allSettled([
+    getUsdcBalance(),
+    getEthBalance(),
+    getEthPrice(),
+    getTransactionList(walletAddress, 'asc', '1', '1'),
+    getTokenTransfers(walletAddress)
+  ]);
 
-    const usdcBalance = Number(formatUnits(BigInt(usdcRaw || '0'), 6));
-    const ethBalance = Number(formatUnits(BigInt(ethBalanceWei || '0'), 18));
-    const ethPrice = Number(ethPriceData?.ethusd ?? 0);
+  const usdcRaw = usdcResult.status === 'fulfilled' ? usdcResult.value : '0';
+  const ethBalanceWei =
+    ethBalanceResult.status === 'fulfilled' ? ethBalanceResult.value : '0';
+  const ethPriceData =
+    ethPriceResult.status === 'fulfilled' ? ethPriceResult.value : null;
+  const firstTxList =
+    txListResult.status === 'fulfilled' ? txListResult.value : [];
+  const tokenTransfers =
+    transfersResult.status === 'fulfilled' ? transfersResult.value : [];
 
-    const portfolioValueUsd = ethBalance * ethPrice;
-    const usdcPlusPortfolio = usdcBalance + portfolioValueUsd;
+  const usdcBalance = Number(formatUnits(BigInt(usdcRaw || '0'), 6));
+  const ethBalance = Number(formatUnits(BigInt(ethBalanceWei || '0'), 18));
+  const ethPrice = Number(ethPriceData?.ethusd ?? 0);
 
-    const dailyChangeUsd = calculateDailyChange(tokenTransfers, walletAddress);
-    const dailyChangePercent =
-      usdcBalance > 0 ? (dailyChangeUsd / usdcBalance) * 100 : 0;
+  const portfolioValueUsd = ethBalance * ethPrice;
+  const usdcPlusPortfolio = usdcBalance + portfolioValueUsd;
 
-    let joinedDate = 'Unknown';
-    if (firstTxList.length > 0) {
-      const ts = Number(firstTxList[0].timeStamp) * 1000;
-      joinedDate = format(new Date(ts), 'MMM yyyy');
-    }
+  const dailyChangeUsd = calculateDailyChange(tokenTransfers, walletAddress);
+  const dailyChangePercent =
+    usdcBalance > 0 ? (dailyChangeUsd / usdcBalance) * 100 : 0;
 
-    return {
-      address: walletAddress,
-      dailyChangePercent: Math.round(dailyChangePercent * 10) / 10,
-      dailyChangeUsd: Math.round(dailyChangeUsd * 100) / 100,
-      joinedDate,
-      portfolioValueUsd: Math.round(portfolioValueUsd * 100) / 100,
-      usdcBalance: Math.round(usdcBalance * 100) / 100,
-      usdcPlusPortfolio: Math.round(usdcPlusPortfolio * 100) / 100
-    };
-  } catch (error) {
-    console.error('Failed to fetch wallet data:', error);
-    return DEMO_WALLET_DATA;
+  let joinedDate = 'Unknown';
+  if (firstTxList.length > 0) {
+    const ts = Number(firstTxList[0].timeStamp) * 1000;
+    joinedDate = format(new Date(ts), 'MMM yyyy');
   }
+
+  return {
+    address: walletAddress,
+    dailyChangePercent: Math.round(dailyChangePercent * 10) / 10,
+    dailyChangeUsd: Math.round(dailyChangeUsd * 100) / 100,
+    joinedDate,
+    portfolioValueUsd: Math.round(portfolioValueUsd * 100) / 100,
+    usdcBalance: Math.round(usdcBalance * 100) / 100,
+    usdcPlusPortfolio: Math.round(usdcPlusPortfolio * 100) / 100
+  };
 }
