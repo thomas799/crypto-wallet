@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useCallback } from 'react';
 import {
   Area,
@@ -32,7 +33,14 @@ export function PriceChart({ data, onHover }: PriceChartProps) {
   }, [onHover]);
 
   return (
-    <div className="min-h-[88px] w-full flex-1">
+    <div className="relative min-h-[88px] w-full flex-1">
+      <Image
+        src="/brand-icon.svg"
+        alt=""
+        width={30}
+        height={20}
+        className="absolute right-0 top-[-53px]"
+      />
       <ResponsiveContainer height="100%" width="100%">
         <AreaChart
           data={data}

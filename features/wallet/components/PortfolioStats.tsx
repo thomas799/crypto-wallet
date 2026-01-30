@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import NumberFlow from '@number-flow/react';
 
 import type { WalletData } from '../types';
@@ -29,10 +30,7 @@ export function PortfolioStats({ wallet }: PortfolioStatsProps) {
           USDC + Portfolio
         </p>
         <div className="flex items-center gap-1.5">
-          <span className="inline-flex">
-            <span className="-mr-1 inline-block h-2.5 w-2.5 rounded-full bg-success" />
-            <span className="inline-block h-2.5 w-2.5 rounded-full bg-orange-400" />
-          </span>
+          <Image src="/money-icon.png" alt="" width={24} height={24} />
           <p className="text-base font-medium leading-5 tracking-[-0.02em] text-black">
             <NumberFlow
               format={{

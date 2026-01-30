@@ -1,5 +1,5 @@
+import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { ArrowDownCircle } from 'lucide-react';
 
 interface DepositButtonProps {
   onDeposit: () => void;
@@ -17,7 +17,7 @@ export function DepositButton({ onDeposit }: DepositButtonProps) {
       whileTap={{ scale: 0.97 }}
       onClick={onDeposit}
     >
-      <ArrowDownCircle className="h-5 w-5" />
+      <Image src="/arrow-down-icon.svg" alt="" width={20} height={20} />
       Deposit
     </motion.button>
   );
