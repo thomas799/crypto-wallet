@@ -9,7 +9,7 @@ export function WithdrawButton({ onWithdraw }: WithdrawButtonProps) {
   return (
     <motion.button
       drag
-      className="flex items-center justify-center gap-2 rounded-2xl border-2 border-gray-200 bg-white py-4 text-base font-semibold text-gray-900"
+      className="flex h-11 items-center justify-center gap-2 rounded-lg border border-[#E1E1E1] bg-[#F8F8F8] text-sm font-medium leading-[18px] tracking-[-0.02em] text-black"
       dragConstraints={{ bottom: 0, left: 0, right: 0, top: 0 }}
       dragElastic={0.1}
       whileDrag={{ rotate: -2, scale: 1.05 }}

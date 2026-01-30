@@ -22,7 +22,7 @@ export function DashboardContent({
 
   return (
     <>
-      <div className="grid w-full max-w-7xl grid-cols-1 gap-3 lg:grid-cols-2">
+      <div className="grid w-[1290px] max-w-full grid-cols-1 gap-3 lg:grid-cols-2">
         <WalletCard
           initialData={initialWalletData}
           onDeposit={openDeposit}

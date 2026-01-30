@@ -22,14 +22,12 @@ export function WalletCard({
   const { wallet } = useWallet(initialData);
 
   return (
-    <div className="flex flex-col justify-between rounded-3xl bg-white p-6 shadow-lg">
-      <div>
-        <div className="flex items-start justify-between">
-          <WalletHeader wallet={wallet} />
-          <PortfolioStats wallet={wallet} />
-        </div>
-        <BalanceDisplay wallet={wallet} />
+    <div className="flex flex-col justify-between gap-px rounded-lg border border-[#E5E5E5] bg-white p-5">
+      <div className="flex items-center justify-between">
+        <WalletHeader wallet={wallet} />
+        <PortfolioStats wallet={wallet} />
       </div>
+      <BalanceDisplay wallet={wallet} />
       <TransactionButtons onDeposit={onDeposit} onWithdraw={onWithdraw} />
     </div>
   );

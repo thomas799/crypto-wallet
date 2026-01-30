@@ -19,10 +19,10 @@ export function TimeRangeButton({
     <motion.button
       key={range}
       className={cn(
-        'relative rounded-full px-3 py-1 text-xs font-medium transition-colors',
+        'relative flex h-6 items-center justify-center rounded-[70px] px-3 text-xs font-normal leading-[15px] tracking-[-0.02em] transition-colors',
         selectedRange === range
-          ? 'text-orange-900'
-          : 'text-gray-500 hover:text-gray-700'
+          ? 'text-[#FF5100]'
+          : 'text-[#868686] hover:text-gray-600'
       )}
       whileHover={selectedRange !== range ? { scale: 1.05 } : undefined}
       whileTap={{ scale: 0.95 }}
@@ -30,7 +30,7 @@ export function TimeRangeButton({
     >
       {selectedRange === range && (
         <motion.div
-          className="absolute inset-0 rounded-full bg-orange-200"
+          className="absolute inset-0 rounded-[70px] bg-[rgba(255,81,0,0.1)]"
           layoutId="timeRangeIndicator"
           transition={{
             damping: 25,

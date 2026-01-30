@@ -8,10 +8,12 @@ interface PortfolioStatsProps {
 
 export function PortfolioStats({ wallet }: PortfolioStatsProps) {
   return (
-    <div className="flex items-center gap-6">
-      <div className="text-right">
-        <p className="text-xs text-gray-500">Portfolio ( Not USDC )</p>
-        <p className="mt-0.5 text-base font-semibold text-gray-900">
+    <div className="flex items-center gap-7">
+      <div className="flex flex-col items-center gap-1">
+        <p className="text-xs font-normal leading-[15px] tracking-[-0.02em] text-[#868686]">
+          Portfolio ( Not USDC )
+        </p>
+        <p className="text-base font-medium leading-5 tracking-[-0.02em] text-black">
           <NumberFlow
             format={{
               currency: 'USD',
@@ -21,14 +23,17 @@ export function PortfolioStats({ wallet }: PortfolioStatsProps) {
           />
         </p>
       </div>
-      <div className="border-l border-gray-200 pl-6 text-right">
-        <p className="text-xs text-gray-500">USDC + Portfolio</p>
-        <div className="mt-0.5 flex items-center justify-end gap-1.5">
+      <div className="h-6 w-px bg-[#E5E5E5]" />
+      <div className="flex flex-col items-center gap-0.5">
+        <p className="text-xs font-normal leading-[15px] tracking-[-0.02em] text-[#868686]">
+          USDC + Portfolio
+        </p>
+        <div className="flex items-center gap-1.5">
           <span className="inline-flex">
-            <span className="-mr-1 inline-block h-3 w-3 rounded-full bg-success" />
-            <span className="inline-block h-3 w-3 rounded-full bg-orange-400" />
+            <span className="-mr-1 inline-block h-2.5 w-2.5 rounded-full bg-success" />
+            <span className="inline-block h-2.5 w-2.5 rounded-full bg-orange-400" />
           </span>
-          <p className="text-base font-semibold text-gray-900">
+          <p className="text-base font-medium leading-5 tracking-[-0.02em] text-black">
             <NumberFlow
               format={{
                 currency: 'USD',

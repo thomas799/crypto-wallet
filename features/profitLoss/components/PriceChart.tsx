@@ -32,7 +32,7 @@ export function PriceChart({ data, onHover }: PriceChartProps) {
   }, [onHover]);
 
   return (
-    <div className="mt-4 h-[87px] w-full">
+    <div className="min-h-[88px] w-full flex-1">
       <ResponsiveContainer height="100%" width="100%">
         <AreaChart
           data={data}
@@ -41,8 +41,8 @@ export function PriceChart({ data, onHover }: PriceChartProps) {
         >
           <defs>
             <linearGradient id="orangeGradient" x1="0" x2="0" y1="0" y2="1">
-              <stop offset="0%" stopColor="#ff6b35" stopOpacity={0.3} />
-              <stop offset="100%" stopColor="#ff6b35" stopOpacity={0.02} />
+              <stop offset="2%" stopColor="#FF5100" stopOpacity={0.2} />
+              <stop offset="91%" stopColor="#FF5100" stopOpacity={0} />
             </linearGradient>
           </defs>
           <XAxis hide dataKey="date" />
@@ -50,7 +50,7 @@ export function PriceChart({ data, onHover }: PriceChartProps) {
           <Tooltip
             content={() => null}
             cursor={{
-              stroke: '#ff6b35',
+              stroke: '#FF5100',
               strokeDasharray: '4 4',
               strokeWidth: 1
             }}
@@ -58,7 +58,7 @@ export function PriceChart({ data, onHover }: PriceChartProps) {
           <Area
             dataKey="value"
             fill="url(#orangeGradient)"
-            stroke="#ff6b35"
+            stroke="#FF5100"
             strokeWidth={2}
             type="monotone"
           />

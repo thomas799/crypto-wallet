@@ -11,7 +11,7 @@ export function TransactionButtons({
   onWithdraw
 }: TransactionButtonsProps) {
   return (
-    <div className="mt-8 grid grid-cols-2 gap-3">
+    <div className="grid grid-cols-2 gap-2">
       <DepositButton onDeposit={onDeposit} />
       <WithdrawButton onWithdraw={onWithdraw} />
     </div>

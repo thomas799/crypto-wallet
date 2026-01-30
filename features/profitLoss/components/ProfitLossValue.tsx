@@ -14,13 +14,8 @@ export function ProfitLossValue({
   value
 }: ProfitLossValueProps) {
   return (
-    <div className="mt-4">
-      <div
-        className={cn(
-          'text-4xl font-bold',
-          isPositive ? 'text-success' : 'text-danger'
-        )}
-      >
+    <div>
+      <div className="text-[40px] font-normal leading-[51px] tracking-[-0.02em] text-black">
         <NumberFlow
           format={{
             currency: 'USD',
@@ -30,7 +25,9 @@ export function ProfitLossValue({
           value={value}
         />
       </div>
-      <p className="mt-1 text-sm text-gray-500">{label}</p>
+      <p className="mt-1 text-sm font-medium leading-[18px] tracking-[-0.02em] text-[#868686]">
+        {label}
+      </p>
     </div>
   );
 }

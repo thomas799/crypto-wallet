@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} flex min-h-screen items-center justify-center p-4 font-sans md:p-8`}
+        className={`${inter.variable} flex min-h-screen items-center justify-center px-[140px] py-4 font-sans md:py-8`}
       >
         <Providers>{children}</Providers>
       </body>

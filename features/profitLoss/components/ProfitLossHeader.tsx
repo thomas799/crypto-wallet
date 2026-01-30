@@ -17,11 +17,11 @@ export function ProfitLossHeader({
   return (
     <div className="flex items-center gap-2">
       <ArrowUpRight
-        className={cn('h-4 w-4', isPositive ? 'text-success' : 'text-danger')}
+        className={cn('h-4 w-4', isPositive ? 'text-[#3CAB68]' : 'text-danger')}
       />
-      <span className="font-semibold text-gray-900">Profit/Loss</span>
+      <span className="text-sm font-normal leading-[18px] tracking-[-0.02em] text-[#868686]">Profit/Loss</span>
       <motion.button
-        className="rounded-full p-1 text-gray-400 hover:text-gray-600"
+        className="rounded-full p-0.5 text-[#868686] hover:text-gray-600"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={onRefresh}

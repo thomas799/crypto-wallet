@@ -34,7 +34,7 @@ const config: Config = {
           500: '#0ea5e9',
           900: '#0c2d6b'
         },
-        success: '#10b981',
+        success: '#3CAB68',
         warning: '#f59e0b'
       },
       fontFamily: {

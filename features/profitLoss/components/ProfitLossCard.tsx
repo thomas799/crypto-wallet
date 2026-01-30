@@ -26,7 +26,7 @@ export function ProfitLossCard({ initialData }: ProfitLossCardProps) {
   } = useProfitLoss(initialData);
 
   return (
-    <div className="flex flex-col rounded-3xl bg-white p-6 shadow-lg">
+    <div className="flex flex-col justify-between gap-px rounded-lg border border-[#E5E5E5] bg-white p-5">
       <div className="flex items-center justify-between">
         <ProfitLossHeader
           isFetching={isFetching}
